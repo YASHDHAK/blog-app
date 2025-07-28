@@ -18,9 +18,10 @@ import {
   author_service,
   blog_service,
   useAppData,
+  blogCategories,
 } from "@/context/AppContext";
 import toast from "react-hot-toast";
-import { blogCategories } from "../../new/page";
+
 import { useParams } from "next/navigation";
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 const EditBlogPage = () => {

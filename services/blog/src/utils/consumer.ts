@@ -9,12 +9,12 @@ interface CacheInvalidationMessage {
 
 export const startCacheConsumer = async () => {
   try {
-    const connection = await amqp.connect({
+     const connection = await amqp.connect({
       protocol: "amqp",
-      hostname: "localhost",
+      hostname: process.env.Rabbitmq_host,
       port: 5672,
-      username: "admin",
-      password: "admin123"
+      username: process.env.Rabbitmq_Username,
+      password: process.env.Rabbitmq_Password,
     });
 
     const channel = await connection.createChannel();

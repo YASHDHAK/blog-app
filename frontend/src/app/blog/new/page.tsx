@@ -10,20 +10,12 @@ import React, { useRef, useState,useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import toast from 'react-hot-toast'
 import Cookies from 'js-cookie'
-import { author_service, useAppData } from '@/context/AppContext'
+import { author_service, useAppData,blogCategories } from '@/context/AppContext'
 import axios from 'axios'
 
 const JoditEditor = dynamic(() => import('jodit-react'),{ssr:false})
 
-export const blogCategories = [
-    "Technology",
-    "Health",
-    "Finance",
-    "Travel",
-    "Education",
-    "Entertainment",
-    "Study",
-]
+
 const AddBlog = () => {
 
 

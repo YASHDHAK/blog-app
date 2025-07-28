@@ -28,11 +28,13 @@ const NavBar = () => {
               Home
             </Link>
           </li>  
+         {isAuth &&
             <li>
             <Link href={"/blog/saved"} className="hover:text-blue-500">
               Saved Blogs
             </Link>
           </li> 
+         }
      {
         loading ? (
             ""
@@ -65,16 +67,31 @@ const NavBar = () => {
               Home
             </Link>
           </li>  
-            <li>
+         {isAuth &&  
+         <li>
             <Link href={"/blog/saved"} className="hover:text-blue-500">
               Saved Blogs
             </Link>
           </li> 
-            <li>
+          }
+    {
+        loading ? (
+            ""
+        ) : (
+    <li>
+        {
+         isAuth ? (
+            <Link href={"/profile"} className="hover:text-blue-500">
+              <CircleUserRound/>
+            </Link> )
+                 :(
             <Link href={"/login"} className="hover:text-blue-500">
               <LogIn/>
             </Link>
-          </li> 
+                )}
+          </li>
+        )
+     }
        </ul>
 
        </div>
