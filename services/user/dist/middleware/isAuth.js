@@ -15,6 +15,12 @@ const isAuth = async (req, res, next) => {
             return;
         }
         const token = authHeader.split(" ")[1];
+        if (!token || token === "undefined") {
+            res.status(401).json({
+                message: "Authorization token is missing or invalid.",
+            });
+            return;
+        }
         const decodeValue = jsonwebtoken_1.default.verify(token, process.env.JWT_SEC);
         if (!decodeValue || !decodeValue.user) {
             res.status(401).json({

@@ -22,7 +22,12 @@ export const isAuth = async (
     }
 
     const token = authHeader.split(" ")[1];
-
+    if (!token || token === "undefined") {
+      res.status(401).json({
+        message: "Authorization token is missing or invalid.",
+      });
+      return;
+    }
     const decodeValue = jwt.verify(
       token,
       process.env.JWT_SEC as string

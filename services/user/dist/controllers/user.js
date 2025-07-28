@@ -116,16 +116,19 @@ exports.loginUser = (0, TryCatch_js_1.default)(async (req, res) => {
         });
         return;
     }
+    //console.log("code",code);
     const googleRes = await GoogleConfig_js_1.oauth2client.getToken(code);
+    //console.log("googleRes",googleRes);
     GoogleConfig_js_1.oauth2client.setCredentials(googleRes.tokens);
     const userRes = await axios_1.default.get(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${googleRes.tokens.access_token}`);
-    const { email, name, image } = userRes.data;
+    //console.log("userRes",userRes);
+    const { email, name, picture } = userRes.data;
     let user = await User_js_1.default.findOne({ email });
     if (!user) {
         user = await User_js_1.default.create({
             name,
             email,
-            image: image,
+            image: picture,
         });
     }
     const token = jsonwebtoken_1.default.sign({ user }, process.env.JWT_SEC, {
