@@ -86,10 +86,10 @@ export const updateBlog = TryCatch(async (req: AuthenticatedRequest, res) => {
 
   const updatedBlog = await sql`UPDATE blogs SET 
   title = ${title || blog[0].title},
-  description = ${title || blog[0].description},
+  description = ${description || blog[0].description},
   image= ${imageUrl},
-  blogcontent = ${title || blog[0].blogcontent},
-  category = ${title || blog[0].category}
+  blogcontent = ${blogcontent || blog[0].blogcontent},
+  category = ${category || blog[0].category}
 
   WHERE id = ${id}
   RETURNING *
