@@ -90,7 +90,6 @@ export const updateBlog = TryCatch(async (req: AuthenticatedRequest, res) => {
   image= ${imageUrl},
   blogcontent = ${blogcontent || blog[0].blogcontent},
   category = ${category || blog[0].category}
-
   WHERE id = ${id}
   RETURNING *
   `;
